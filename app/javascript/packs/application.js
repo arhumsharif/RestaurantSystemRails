@@ -13,3 +13,16 @@ import "bootstrap"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+console.log("acha")
+
+function generateID()
+{
+    var string=""
+    for (var i=0;i<8;i++)
+    {
+        var digit =  Math.floor(Math.random() * 10);
+        string += digit.toString()
+    }
+    console.log(string)
+}
