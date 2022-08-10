@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # Viewing Admin Restaurants
   get 'admin_view', to: 'admin#View'
   # Delete a Restaurant 
-  delete 'admin/deleterestaurant/:id' , to: 'admin#destroy_restaurant'
+  delete '/admindeleterestaurant/:id' , to: 'admin#destroy_restaurant', as: 'deleterestaurant'
+  # Delete a Restaurant Cut Percentage
+  delete '/admindeleterestaurantcut/:id' , to: 'admin#destroy_restaurant_cut', as: 'deleterestaurantcut'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

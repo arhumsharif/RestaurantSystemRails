@@ -70,6 +70,17 @@ class AdminController < ApplicationController
 
   # Delete a Restaurant 
   def destroy_restaurant
-    
+    @res_id = params[:id]
+    Restaurant.destroy(@res_id)
+    redirect_to admin_view_path
+    flash[:alert] = 'Restaurant has been deleted successfully'
+  end
+
+  # Delete a Restaurant Cut Percentage
+  def destroy_restaurant_cut
+    @res_id = params[:id]
+    RestaurantPercent.destroy(@res_id)
+    redirect_to admin_view_path
+    flash[:alert] = 'Restaurant Cut Percentage has been deleted successfully'
   end
 end

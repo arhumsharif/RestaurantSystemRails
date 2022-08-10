@@ -30,7 +30,7 @@
                         <th scope="row"><%= res.admin_id %></th>
                         <td><%= res.restaurant_name %></td>
                         <td><%= res.manager_id %></td>
-                        <td><%= link_to 'Remove','',as: :delete_restaurant, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        <td><%= link_to 'Remove',deleterestaurant_path(res.id),as: :delete_restaurant, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -55,7 +55,7 @@
                         <th scope="row"><%= res.admin_id %></th>
                         <td><%= res.restaurant_name %></td>
                         <td><%= res.percent %></td>
-                        <td><%= link_to 'Remove', '', method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        <td><%= link_to 'Remove', deleterestaurantcut_path(res.id), method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
                         </tr>
                     <% end %>
                 </tbody>

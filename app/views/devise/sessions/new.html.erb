@@ -1,0 +1,35 @@
+<div class="m-0 p-0 w-100 pt-5 full-height bg-light d-flex justify-content-center">
+
+  <div class="px-5 py-3 registrationsScreen bg-dark text-white">
+    <h1><%= t('.sign_in') %></h1>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group w-50">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: 'Admin Email....' %>
+      </div>
+
+      <div class="form-group w-50">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control',  placeholder: 'Admin Password....' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group form-check">
+          <%= f.check_box :remember_me, class: 'form-check-input' %>
+          <%= f.label :remember_me, class: 'form-check-label' do %>
+            <%= resource.class.human_attribute_name('remember_me') %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="form-group d-flex">
+        <div class="form-group mr-2">
+            <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
+        </div>
+        <%= render 'devise/shared/links' %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
