@@ -62,4 +62,14 @@ class AdminController < ApplicationController
       render 'admin/AddCutpercentage'
     end
   end
+
+  def View 
+    @restaurants = Restaurant.where('admin_id' => current_admin.id)
+    @restaurantsPercent = RestaurantPercent.where('admin_id' => current_admin.id)
+  end
+
+  # Delete a Restaurant 
+  def destroy_restaurant
+    
+  end
 end

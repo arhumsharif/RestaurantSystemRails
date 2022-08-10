@@ -1,0 +1,66 @@
+<div class='w-100 h-100 d-flex mt-1'>
+    <div class="border fixed-sidebar side-bar">
+        <div class="mt-5 text-center bg-secondary py-3">
+            <%= link_to 'Add a Restaurant', admin_addrestaurant_path, method: :get, class: 'btn' %>
+        </div>
+        <div class="mt-5 text-center bg-secondary py-3">
+            <%= link_to 'Add a Restaurant Cut Percentage', admin_addcutpercentage_path, method: :get, class: 'btn' %>
+        </div>
+        <div class="mt-5 text-center bg-info py-3">
+            <%= link_to 'View', admin_view_path, method: :get, class: 'btn' %>
+        </div>
+    </div>
+    <div class="w-75 admin-dashboard admin-view-page">
+        <h1 class="text-center mt-5 mb-5">Welcome Admin</h1>
+        <% if @restaurants %>    
+            <div class="d-flex flex-column align-items-center mt-5">
+                <h4>My Restaurants </h4>
+                <table class="table table-bordered table-hover col-9 mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">Admin ID</th>
+                    <th scope="col">Restaurant Name</th>
+                    <th scope="col">Restaurant Manager ID</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @restaurants.each do |res| %>
+                        <tr>
+                        <th scope="row"><%= res.admin_id %></th>
+                        <td><%= res.restaurant_name %></td>
+                        <td><%= res.manager_id %></td>
+                        <td><%= link_to 'Remove','',as: :delete_restaurant, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        <% end %>
+        <% if @restaurantsPercent %>    
+            <div class="d-flex flex-column align-items-center mt-5">
+                <h4>My Restaurants Cut Percentage </h4>
+                <table class="table table-bordered table-hover col-9 mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">Admin ID</th>
+                    <th scope="col">Restaurant Name</th>
+                    <th scope="col">Restaurant Cut Percentage</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @restaurantsPercent.each do |res| %>
+                        <tr>
+                        <th scope="row"><%= res.admin_id %></th>
+                        <td><%= res.restaurant_name %></td>
+                        <td><%= res.percent %></td>
+                        <td><%= link_to 'Remove', '', method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        <% end %>
+    </div>
+</div>
