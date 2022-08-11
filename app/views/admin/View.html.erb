@@ -21,6 +21,9 @@
                     <th scope="col">Admin ID</th>
                     <th scope="col">Restaurant Name</th>
                     <th scope="col">Restaurant Manager ID</th>
+                    <th scope="col">Restaurant Status</th>
+                    <th scope="col">Restaurant Opening Time</th>
+                    <th scope="col">Restaurant Closing Time</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -30,6 +33,13 @@
                         <th scope="row"><%= res.admin_id %></th>
                         <td><%= res.restaurant_name %></td>
                         <td><%= res.manager_id %></td>
+                        <% if res.status == '1' %>
+                            <td> Open </td>
+                        <% else %>
+                            <td> Closed </td>
+                        <% end %>
+                        <td><%= res.open_time %></td>
+                        <td><%= res.close_time %></td>
                         <td><%= link_to 'Remove',deleterestaurant_path(res.id),as: :delete_restaurant, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
                         </tr>
                     <% end %>

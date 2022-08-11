@@ -17,10 +17,27 @@
         <div class="d-flex flex-column justify-content-center px-3">
             <%= form_tag admin_addrestaurantdata_path, method: :get do %>
                 <div class="form-group">
+                     <%= label_tag ('Restaurant Name:') %>
                      <%= text_field_tag :restaurant, params[:restaurant], placeholder: 'Enter Restaurant Name', autofocus: true, class: "form-control w-50 rounded" %>
                 </div>
                 <div class="form-group">
-                     <%= number_field_tag :manager, params[:manager], placeholder: 'Enter Manager ID', autofocus: true, class: "form-control w-50 rounded" %>
+                     <%= label_tag ('Manager ID:') %>
+                     <%= number_field_tag :manager, params[:manager], placeholder: '(XXXX) Auto Generated', autofocus: true, class: "form-control w-50 rounded", disabled: true %>
+                </div>
+
+                <div class="form-group">
+                     <%= label_tag ('Restaurant Status:') %>
+                     <%= select_tag(:status, options_for_select([['Closed','0'],['Open','1']]) ,class: "form-control w-50 rounded") %>
+                </div>
+
+                <div class="form-group">
+                     <%= label_tag ('Restaurant Opening Timing:') %>
+                     <%= select_tag(:open_time, options_for_select([['12:00 AM','12:00 AM'],['1:00 AM','1:00 AM'],['2:00 AM','2:00 AM'],['3:00 AM','3:00 AM'],['4:00 AM','4:00 AM'],['5:00 AM','5:00 AM'],['6:00 AM','6:00 AM'],['7:00 AM','7:00 AM'],['8:00 AM','8:00 AM'],['9:00 AM','9:00 AM'],['10:00 AM','10:00 AM'],['11:00 AM','11:00 AM'],['12:00 PM','12:00 PM'],['1:00 PM','1:00 PM'],['2:00 PM','2:00 PM'],['3:00 PM','3:00 PM'],['4:00 PM','4:00 PM'],['5:00 PM','5:00 PM'],['6:00 PM','6:00 PM'],['7:00 PM','7:00 PM'],['8:00 PM','8:00 PM'],['9:00 PM','9:00 PM'],['10:00 PM','10:00 PM'],['11:00 PM','11:00 PM']]) ,class: "form-control w-50 rounded") %>
+                </div>
+
+                <div class="form-group">
+                     <%= label_tag ('Restaurant Closing Time:') %>
+                     <%= select_tag(:close_time, options_for_select([['12:00 AM','12:00 AM'],['1:00 AM','1:00 AM'],['2:00 AM','2:00 AM'],['3:00 AM','3:00 AM'],['4:00 AM','4:00 AM'],['5:00 AM','5:00 AM'],['6:00 AM','6:00 AM'],['7:00 AM','7:00 AM'],['8:00 AM','8:00 AM'],['9:00 AM','9:00 AM'],['10:00 AM','10:00 AM'],['11:00 AM','11:00 AM'],['12:00 PM','12:00 PM'],['1:00 PM','1:00 PM'],['2:00 PM','2:00 PM'],['3:00 PM','3:00 PM'],['4:00 PM','4:00 PM'],['5:00 PM','5:00 PM'],['6:00 PM','6:00 PM'],['7:00 PM','7:00 PM'],['8:00 PM','8:00 PM'],['9:00 PM','9:00 PM'],['10:00 PM','10:00 PM'],['11:00 PM','11:00 PM']]) ,class: "form-control w-50 rounded") %>
                 </div>
 
                 <div>

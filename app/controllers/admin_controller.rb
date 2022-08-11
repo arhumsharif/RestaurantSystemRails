@@ -7,21 +7,18 @@ class AdminController < ApplicationController
   end
   def AddRestaurantData
     if params[:restaurant].present?
-      if params[:manager].present?
-        @restaurant_find = Restaurant.find_by(restaurant_name: params[:restaurant])
-        if @restaurant_find
-          redirect_to admin_addrestaurant_path
-          flash[:alert] = 'This Restaurant is already in Database'
-        else
-          @id = Restaurant.last.id
-          @id = @id + 1
-          @restaurant_entry = Restaurant.create(id: @id ,restaurant_name: params[:restaurant], manager_id: params[:manager], admin_id: current_admin.id)
-          redirect_to admin_addrestaurant_path
-          flash[:notice] = 'Restaurant has been added successfully'
-        end
+      @restaurant_find = Restaurant.find_by(restaurant_name: params[:restaurant])
+      if @restaurant_find
+        redirect_to admin_addrestaurant_path
+        flash[:alert] = 'This Restaurant is already in Database'
       else
-        flash.now[:alert] = 'Please Enter a Manager ID'
-        render 'admin/AddRestaurant'
+        @managerID = Restaurant.last.manager_id
+        @managerID = @managerID + 1
+        @id = Restaurant.last.id
+        @id = @id + 1
+        @restaurant_entry = Restaurant.create(id: @id ,restaurant_name: params[:restaurant], manager_id: @managerID, admin_id: current_admin.id,status: params[:status], open_time: params[:open_time], close_time: params[:close_time])
+        redirect_to admin_addrestaurant_path
+        flash[:notice] = 'Restaurant has been added successfully'
       end
     else
       flash.now[:alert] = 'Please Enter a Restaurant Name'
@@ -64,8 +61,8 @@ class AdminController < ApplicationController
   end
 
   def View 
-    @restaurants = Restaurant.where('admin_id' => current_admin.id)
-    @restaurantsPercent = RestaurantPercent.where('admin_id' => current_admin.id)
+    @restaurants = Restaurant.all
+    @restaurantsPercent = RestaurantPercent.all
   end
 
   # Delete a Restaurant 
