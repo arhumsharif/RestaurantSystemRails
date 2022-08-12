@@ -4,6 +4,21 @@
     height: 94vh;
 }
 
+.sidenav-line{
+    width: 90%;
+    border-top: 1px solid white;
+    opacity: 0.4;
+}
+
+.icon-color :hover{
+    opacity: 1;
+}
+
+.icon-color{
+    color: white;
+    opacity: 0.6;
+}
+
 .side-bar{
     background-color:  #2e4053 ;
 }
@@ -13,18 +28,25 @@
 
 .admin-view-page
 {
-    margin-left: 460px;
+    margin-left: 360px;
+}
+
+.side-menu-width{
+    width: 20%;
+}
+.content-width{
+    width: 80%;
 }
 
 .fixed-sidebar
 {
     margin-top: 59px;
     height: 100%;
-    width: 25%;
+    width: 20%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #2e4053;
+    background-color: #4e73df;
     overflow-x: hidden;
     padding-top: 20px;
 }

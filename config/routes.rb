@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  get 'admin/dashboard' , to: 'admin#dashboard'
+  get 'admin_dashboard' , to: 'admin#dashboard'
   # Getting Dashboard of Admin
   get 'admin_addrestaurant', to: 'admin#AddRestaurant'
   get 'admin_addrestaurantdata', to: 'admin#AddRestaurantData'

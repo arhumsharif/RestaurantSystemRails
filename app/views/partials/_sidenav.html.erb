@@ -1,0 +1,30 @@
+<div class="side-menu-width border fixed-sidebar">
+    <div class="mt-2 py-2 d-flex justify-content-center">
+        <%= fa_icon 'user 2x', class: 'text-white' %>
+        <h4 class="mt-1 px-3 text-white">Admin Dashboard</h4>
+    </div>
+    <hr class="sidenav-line">
+    <div class="mt-1 text-center py-2">
+        <%= fa_icon 'file 2x', class: 'icon-color' %>
+        <%= link_to 'Dashboard', admin_dashboard_path, method: :get, class: 'btn text-center text-white mb-1' %>
+    </div>
+    <hr class="sidenav-line">
+    <div class="mt-1 text-center py-2">
+        <%= fa_icon 'user-plus 2x', class: 'icon-color' %>
+        <%= link_to 'Add a Manager', '', method: :get, class: 'btn text-center text-white mb-1' %>
+    </div>
+    <div class="mt-2 text-center py-2">
+        <%= fa_icon 'building 2x', class: 'icon-color' %>
+        <%= link_to 'Add a Restaurant', admin_addrestaurant_path, method: :get, class: 'btn text-center text-white mb-1' %>
+    </div>
+    <div class="mt-2 text-center py-2">
+        <%= fa_icon 'percent 2x', class: 'icon-color' %>
+        <%= link_to 'Add Restaurant Cut Percentage', admin_addcutpercentage_path, method: :get, class: 'btn text-center text-white mb-2' %>
+    </div>
+    <div class="mt-2 text-center py-2">
+        <%= fa_icon 'eye 2x', class: 'icon-color' %>
+        <%= link_to 'View', admin_view_path, method: :get, class: 'btn text-center text-white mb-2' %>
+    </div>
+    <hr class="sidenav-line">
+</div>
+
