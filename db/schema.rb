@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_12_055510) do
+ActiveRecord::Schema.define(version: 2022_08_12_060428) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2022_08_12_055510) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "category_name"
+    t.string "restaurant_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_categories_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -54,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_08_12_055510) do
     t.index ["admin_id"], name: "index_restaurants_on_admin_id"
   end
 
+  add_foreign_key "categories", "items"
   add_foreign_key "restaurant_percents", "admins"
   add_foreign_key "restaurants", "admins"
 end
