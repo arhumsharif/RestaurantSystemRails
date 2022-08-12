@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_12_065919) do
+ActiveRecord::Schema.define(version: 2022_08_12_070435) do
 
   create_table "addons", force: :cascade do |t|
     t.string "addon_name"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2022_08_12_065919) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "item_addons", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "addon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["addon_id"], name: "index_item_addons_on_addon_id"
+    t.index ["item_id"], name: "index_item_addons_on_item_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "item_name"
     t.string "item_desc"
@@ -89,6 +98,8 @@ ActiveRecord::Schema.define(version: 2022_08_12_065919) do
   add_foreign_key "categories", "items"
   add_foreign_key "deal_items", "deals"
   add_foreign_key "deal_items", "items"
+  add_foreign_key "item_addons", "addons"
+  add_foreign_key "item_addons", "items"
   add_foreign_key "restaurant_percents", "admins"
   add_foreign_key "restaurants", "admins"
 end
