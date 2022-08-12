@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_12_070435) do
+ActiveRecord::Schema.define(version: 2022_08_12_071330) do
 
   create_table "addons", force: :cascade do |t|
     t.string "addon_name"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 2022_08_12_070435) do
     t.string "item_desc"
     t.string "price"
     t.string "restaurant_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "option_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
