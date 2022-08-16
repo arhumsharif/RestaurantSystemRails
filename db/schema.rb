@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_172100) do
+ActiveRecord::Schema.define(version: 2022_08_14_172354) do
 
   create_table "addons", force: :cascade do |t|
     t.string "addon_name"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2022_08_14_172100) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_categories_on_item_id"
+  end
+
+  create_table "customer_orders", force: :cascade do |t|
+    t.integer "customers_id", null: false
+    t.integer "orders_id", null: false
+    t.string "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customers_id"], name: "index_customer_orders_on_customers_id"
+    t.index ["orders_id"], name: "index_customer_orders_on_orders_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -145,6 +155,8 @@ ActiveRecord::Schema.define(version: 2022_08_14_172100) do
   end
 
   add_foreign_key "categories", "items"
+  add_foreign_key "customer_orders", "customers", column: "customers_id"
+  add_foreign_key "customer_orders", "orders", column: "orders_id"
   add_foreign_key "deal_items", "deals"
   add_foreign_key "deal_items", "items"
   add_foreign_key "discounts", "items"
