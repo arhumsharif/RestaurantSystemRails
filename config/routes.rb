@@ -32,5 +32,19 @@ Rails.application.routes.draw do
   get 'employee_addcategorydata', to: 'category#AddCategoryData'
   # Deleting an Item From Category
   delete '/deletecategory/:id' , to: 'category#DestroyCategory', as: 'deletecategory'
+  # Routes for Options
+  # Getting Add Option Form
+  get 'employee_addoption', to: 'option#AddOption'
+  # Getting Option data Filled
+  get 'employee_addoptiondata', to: 'option#AddOptionData'
+  # Delete an Option
+  delete '/deleteoption/:id' , to: 'option#DestroyOption', as: 'deleteoption'
+  # -----------assign options
+  # Assign page
+  get 'employee_assignoption', to: 'option#AssignOption'
+  # Assign Data to table
+  get 'employee_assignoptiondata', to: 'option#AssignOptionData'
+  # Delete an Item Option
+  delete '/deleteitemoption/:id' , to: 'option#DestroyItemOption', as: 'deleteitemoption'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

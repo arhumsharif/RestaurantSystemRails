@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_055743) do
+ActiveRecord::Schema.define(version: 2022_08_18_063705) do
 
   create_table "addons", force: :cascade do |t|
     t.string "addon_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "price"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_055743) do
     t.string "option_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "price"
   end
 
   create_table "order_items", force: :cascade do |t|
