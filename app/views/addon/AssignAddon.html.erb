@@ -1,0 +1,54 @@
+<div class='w-100 h-100 d-flex mt-1'>
+    <%= render 'partials/employeeSidenav' %>
+    <div class="content-width admin-view-page px-5">
+        <h1 class="text-center mt-5 mb-5">Welcome Manager</h1>
+        <h3 class=" mt-5 mb-2 px-3">Assign a New Addon to Item</h3>
+        <hr class=" mb-5" >
+        <div class="d-flex flex-column justify-content-center px-3">
+            <%= form_tag employee_assignaddondata_path,class: 'border px-3 py-3', method: :get do %>
+                <div class="form-group">
+                     <%= label_tag ('Item Name:') %>
+                     <%= text_field_tag :item, params[:item], placeholder: 'Please Enter Item Name', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div class="form-group">
+                     <%= label_tag ('Addon Name:') %>
+                     <%= text_field_tag :addon, params[:addon], placeholder: 'Please Enter Addon Name', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div>
+                    <%= button_tag type: :submit, class: "btn btn-success" do %>
+                        Assign
+                    <% end %>
+                </div>
+                
+            <% end %>
+        
+        </div>
+
+        <%# Viewing Cards %>
+        <% if @itemaddon %>    
+            <div class="d-flex flex-column px-3 mt-5">
+                <h4>Item Addons List </h4>
+                <table class="table table-bordered table-hover col-9 mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Addon ID</th>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @itemaddon.each do |option| %>
+                        <tr>
+                        <th scope="row"><%= option.id %></th>
+                        <td><%= option.addon_id %></td>
+                        <td><%= option.item_id %></td>
+                        <td><%= link_to 'Remove',deleteitemaddon_path(option.id),as: :delete_addon_option, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        <% end %>
+    </div>
+</div>

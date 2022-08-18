@@ -1,0 +1,57 @@
+<div class='w-100 h-100 d-flex mt-1'>
+    <%= render 'partials/employeeSidenav' %>
+    <div class="content-width admin-view-page px-5">
+        <h1 class="text-center mt-5 mb-5">Welcome Manager</h1>
+        <h3 class=" mt-5 mb-2 px-3">Add a New Item Addons</h3>
+        <hr class=" mb-5" >
+        <div class="d-flex flex-column justify-content-center px-3">
+            <%= form_tag employee_addaddondata_path,class: 'border px-3 py-3', method: :get do %>
+                <div class="form-group">
+                     <%= label_tag ('Item Addon Name:') %>
+                     <%= text_field_tag :addon, params[:addon], placeholder: 'Please Enter Addon Name', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div class="form-group">
+                     <%= label_tag ('Item Option Name:') %>
+                     <%= number_field_tag :price, params[:price], placeholder: 'Please Enter Option Price', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div>
+                    <%= button_tag type: :submit, class: "btn btn-success" do %>
+                        Add Item Addon
+                    <% end %>
+                    <%= button_tag type: :submit, class: "btn btn-primary",formaction: employee_assignaddon_path do %>
+                        Add to a Item
+                    <% end %>
+                </div>
+                
+            <% end %>
+        
+        </div>
+
+        <%# Viewing Cards %>
+        <% if @addons %>    
+            <div class="d-flex flex-column px-3 mt-5">
+                <h4>Addons List </h4>
+                <table class="table table-bordered table-hover col-9 mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Addon Name</th>
+                    <th scope="col">Addon Price</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @addons.each do |addon| %>
+                        <tr>
+                        <th scope="row"><%= addon.id %></th>
+                        <td><%= addon.addon_name %></td>
+                        <td><%= addon.price %></td>
+                        <td><%= link_to 'Remove',deleteaddon_path(addon.id),as: :delete_addon, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        <% end %>
+    </div>
+</div>
