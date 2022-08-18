@@ -63,5 +63,13 @@ Rails.application.routes.draw do
   # Delete an Item Addon
   delete '/deleteitemaddon/:id' , to: 'addon#DestroyItemAddon', as: 'deleteitemaddon'
 
+  # Discounts
+  get 'employee_adddiscount', to: 'discount#AddDiscount'
+  # Getting Addon data Filled
+  get 'employee_adddiscountdata', to: 'discount#AddDiscountData'
+  # Updating Discount
+  get 'employee_updatediscountdata', to: 'discount#UpdateDiscountData'
+  # Delete an Addon
+  delete '/deletediscount/:id' , to: 'discount#DestroyDiscount', as: 'deletediscount'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,57 @@
+<div class='w-100 h-100 d-flex mt-1'>
+    <%= render 'partials/employeeSidenav' %>
+    <div class="content-width admin-view-page px-5">
+        <h1 class="text-center mt-5 mb-5">Welcome Manager</h1>
+        <h3 class=" mt-5 mb-2 px-3">Add a Discount to Item</h3>
+        <hr class=" mb-5" >
+        <div class="d-flex flex-column justify-content-center px-3">
+            <%= form_tag employee_adddiscountdata_path,class: 'border px-3 py-3', method: :get do %>
+                <div class="form-group">
+                     <%= label_tag ('Item Name:') %>
+                     <%= text_field_tag :item, params[:item], placeholder: 'Please Enter Item Name', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div class="form-group">
+                     <%= label_tag ('Discount:') %>
+                     <%= number_field_tag :discount, params[:discount], placeholder: 'Please Enter Discount Value (< 100)', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+                <div>
+                    <%= button_tag type: :submit, class: "btn btn-success" do %>
+                        Add Discount
+                    <% end %>
+                    <%= button_tag type: :submit, class: "btn btn-primary",formaction: employee_updatediscountdata_path do %>
+                        Update Discounts Price
+                    <% end %>
+                </div>
+                
+            <% end %>
+        
+        </div>
+
+        <%# Viewing Cards %>
+        <% if @discounts %>    
+            <div class="d-flex flex-column px-3 mt-5">
+                <h4>Discounts List </h4>
+                <table class="table table-bordered table-hover col-9 mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Discount Value</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @discounts.each do |discount| %>
+                        <tr>
+                        <th scope="row"><%= discount.id %></th>
+                        <td><%= discount.item_id %></td>
+                        <td><%= discount.Discount %></td>
+                        <td><%= link_to 'Remove',deletediscount_path(discount.id),as: :delete_discount, method: :delete, data: {confirm: 'Are You sure?'}, class: 'btn btn-warning' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+        <% end %>
+    </div>
+</div>
