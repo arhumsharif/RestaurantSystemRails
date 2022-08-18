@@ -1,21 +1,11 @@
 <div class='w-100 h-100 d-flex mt-1'>
-    <div class="w-25 border full-height side-bar">
-        <div class="mt-5 text-center bg-info py-3">
-            <%= link_to 'Add a Restaurant', admin_addrestaurant_path, method: :get, class: 'btn' %>
-        </div>
-        <div class="mt-5 text-center bg-secondary py-3">
-            <%= link_to 'Add a Restaurant Cut Percentage', admin_addcutpercentage_path, method: :get, class: 'btn' %>
-        </div>
-        <div class="mt-5 text-center bg-secondary py-3">
-            <%= link_to 'View', admin_view_path, method: :get, class: 'btn' %>
-        </div>
-    </div>
-    <div class="w-75 admin-dashboard">
+    <%= render 'partials/sidenav' %>
+    <div class="content-width admin-view-page px-5">
         <h1 class="text-center mt-5 mb-5">Welcome Admin</h1>
         <h3 class=" mt-5 mb-2 px-3">Add a New Restaurant</h3>
         <hr class=" mb-5" >
         <div class="d-flex flex-column justify-content-center px-3">
-            <%= form_tag admin_addrestaurantdata_path, method: :get do %>
+            <%= form_tag admin_addrestaurantdata_path,class: 'border px-3 py-3', method: :get do %>
                 <div class="form-group">
                      <%= label_tag ('Restaurant Name:') %>
                      <%= text_field_tag :restaurant, params[:restaurant], placeholder: 'Enter Restaurant Name', autofocus: true, class: "form-control w-50 rounded" %>
@@ -23,6 +13,16 @@
                 <div class="form-group">
                      <%= label_tag ('Manager ID:') %>
                      <%= number_field_tag :manager, params[:manager], placeholder: '(XXXX) Auto Generated', autofocus: true, class: "form-control w-50 rounded", disabled: true %>
+                </div>
+
+                <div class="form-group">
+                     <%= label_tag ('Manager Email:') %>
+                     <%= text_field_tag :manager_email, params[:manager_email], placeholder: 'Manager Email', autofocus: true, class: "form-control w-50 rounded" %>
+                </div>
+
+                <div class="form-group">
+                     <%= label_tag ('Manager Password:') %>
+                     <%= text_field_tag :manager_password, params[:manager_password], placeholder: 'Manager Password', autofocus: true, class: "form-control w-50 rounded" %>
                 </div>
 
                 <div class="form-group">
@@ -41,9 +41,6 @@
                 </div>
 
                 <div>
-                    <%= button_tag type: :button, class: "btn btn-primary" , onclick: "generateID();" do %>
-                        Generate Manager ID
-                    <% end %>
                     <%= button_tag type: :submit, class: "btn btn-success" do %>
                         Submit
                     <% end %>

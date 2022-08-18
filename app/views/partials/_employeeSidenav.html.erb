@@ -1,0 +1,46 @@
+<div class="side-menu-width border fixed-sidebar">
+    <div class="mt-2 py-2 d-flex justify-content-center">
+        <%= fa_icon 'users 2x', class: 'text-white' %>
+        <h4 class="mt-1 px-3 text-white">Manager Dashboard</h4>
+    </div>
+    <hr class="sidenav-line">
+    <div class="mt-1 pl-4 py-2">
+        <%= fa_icon 'file 2x', class: 'icon-color' %>
+        <%= link_to 'Dashboard', employee_dashboard_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <hr class="sidenav-line">
+    <%# <div class="mt-1 text-center py-2"> %>
+        <%# <%= fa_icon 'user-plus 2x', class: 'icon-color' %> 
+        <%# <%= link_to 'Add a Manager', '', method: :get, class: 'btn text-center text-white mb-1' %>
+    <%# </div> %>
+    <div class="mt-2 py-2 pl-4">
+        <%= fa_icon 'list 2x', class: 'icon-color' %>
+        <%= link_to 'Category', employee_addcategory_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <div class="mt-2  pl-4 py-2">
+        <%= fa_icon 'apple 2x', class: 'icon-color' %>
+        <%= link_to 'Item', employee_additem_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <div class="mt-2 pl-4 py-2">
+        <%= fa_icon 'plus 2x', class: 'icon-color' %>
+        <%= link_to 'Item Options', employee_dashboard_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <div class="mt-2 pl-4 py-2">
+        <%= fa_icon 'plus 2x', class: 'icon-color' %>
+        <%= link_to 'Item Addons', employee_dashboard_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <div class="mt-2 pl-4 py-2">
+        <%= fa_icon 'plus 2x', class: 'icon-color' %>
+        <%= link_to 'Deals', employee_dashboard_path, method: :get, class: 'btn text-white mb-1' %>
+    </div>
+    <div class="mt-2 pl-4 py-2">
+        <%= fa_icon 'percent 2x', class: 'icon-color' %>
+        <%= link_to 'Discounts', employee_dashboard_path, method: :get, class: 'btn  text-white mb-1' %>
+    </div>
+    <div class="mt-2 pl-4 py-2">
+        <%= fa_icon 'eye 2x', class: 'icon-color' %>
+        <%= link_to 'View Orders', employee_dashboard_path, method: :get, class: 'btn  text-white mb-2' %>
+    </div>
+    <hr class="sidenav-line">
+</div>
+

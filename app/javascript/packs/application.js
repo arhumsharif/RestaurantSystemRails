@@ -10,8 +10,8 @@ import "channels"
 
 import "bootstrap"
 
-window.$ = window.jQuery = require("jquery");
-require("index");
+// window.$ = window.jQuery = require("jquery");
+// require("index");
 
 Rails.start()
 Turbolinks.start()

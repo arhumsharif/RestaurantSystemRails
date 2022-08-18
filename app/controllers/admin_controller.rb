@@ -17,6 +17,7 @@ class AdminController < ApplicationController
         @id = Restaurant.last.id
         @id = @id + 1
         @restaurant_entry = Restaurant.create(id: @id ,restaurant_name: params[:restaurant], manager_id: @managerID, admin_id: current_admin.id,status: params[:status], open_time: params[:open_time], close_time: params[:close_time])
+        @manager_entry = Employee.create(email: params[:manager_email], encrypted_password: params[:manager_password],password: params[:manager_password] , manager_id: @managerID)
         redirect_to admin_addrestaurant_path
         flash[:notice] = 'Restaurant has been added successfully'
       end
